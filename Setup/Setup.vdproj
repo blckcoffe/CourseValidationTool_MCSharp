@@ -15,38 +15,44 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_33F0C7D04ED04379AA403F9895CBB738"
+        "MsmKey" = "8:_21D6F2A9891545DF815804DCF6F5D6AB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_31B05D3103FE417093187F7F451D5EAC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_436149203D8BF77FAEDEAAECD850725F"
-        "OwnerKey" = "8:_51990F72BEDA48AA8853E88B7DDABCAA"
+        "OwnerKey" = "8:_31B05D3103FE417093187F7F451D5EAC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_51990F72BEDA48AA8853E88B7DDABCAA"
+        "MsmKey" = "8:_7334AF7E364B46049BE185AA8D9B461B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6A2ECABDB48DEFEEBCF991578526BF08"
-        "OwnerKey" = "8:_51990F72BEDA48AA8853E88B7DDABCAA"
+        "MsmKey" = "8:_F21ADD34867B0476682546F74338DC36"
+        "OwnerKey" = "8:_31B05D3103FE417093187F7F451D5EAC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_51990F72BEDA48AA8853E88B7DDABCAA"
+        "OwnerKey" = "8:_31B05D3103FE417093187F7F451D5EAC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6A2ECABDB48DEFEEBCF991578526BF08"
+        "OwnerKey" = "8:_F21ADD34867B0476682546F74338DC36"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -80,6 +86,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -87,7 +101,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\Setup.msi"
+        "OutputFilename" = "8:Release\\CourseValidationTool.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -104,6 +118,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -134,12 +156,12 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_33F0C7D04ED04379AA403F9895CBB738"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_21D6F2A9891545DF815804DCF6F5D6AB"
             {
-            "SourcePath" = "8:..\\CourseValidationTool_CSharp\\Properties\\setup.ico"
-            "TargetName" = "8:setup.ico"
+            "SourcePath" = "8:..\\CourseValidationTool_CSharp\\Properties\\shortcut.ico"
+            "TargetName" = "8:shortcut.ico"
             "Tag" = "8:"
-            "Folder" = "8:_0435FABDB30644D7BFD1C456C26A4DD8"
+            "Folder" = "8:_6525477033214D7EA19432EDEDE9D0EB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -185,14 +207,34 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6A2ECABDB48DEFEEBCF991578526BF08"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7334AF7E364B46049BE185AA8D9B461B"
+            {
+            "SourcePath" = "8:C:\\Windows\\System32\\msiexec.exe"
+            "TargetName" = "8:msiexec.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_6525477033214D7EA19432EDEDE9D0EB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F21ADD34867B0476682546F74338DC36"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_6A2ECABDB48DEFEEBCF991578526BF08"
+                    "_F21ADD34867B0476682546F74338DC36"
                     {
                     "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
@@ -254,6 +296,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_31B49B193091454582C61845B0BDD381"
+                    {
+                    "Name" = "8:CourseValidationTool"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_275BFAF9107140E5883856F471156B14"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -271,9 +324,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup"
+        "ProductName" = "8:CourseValidationTool"
         "ProductCode" = "8:{D908CB8F-1391-47DF-9AB1-51EE863673F2}"
-        "PackageCode" = "8:{42BA2372-AF54-4AF0-9347-BA2EF527A47E}"
+        "PackageCode" = "8:{2193BA7C-6DD4-49EC-8180-67198214DAE0}"
         "UpgradeCode" = "8:{24A1CD27-025F-4798-89DC-042FA785AEA5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -281,12 +334,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:SAP"
+        "Manufacturer" = "8:DaCom"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:SAP"
+        "ARPCONTACT" = "8:Da Shen"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -393,7 +446,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_84676DF096644B71B996F31E0E070A9D"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_45892B9D5D3548579FC27AD976B31B4D"
             {
             "Name" = "8:CourseValidationTool"
             "Arguments" = "8:"
@@ -401,10 +454,24 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_51990F72BEDA48AA8853E88B7DDABCAA"
+            "Target" = "8:_31B05D3103FE417093187F7F451D5EAC"
             "Folder" = "8:_0435FABDB30644D7BFD1C456C26A4DD8"
             "WorkingFolder" = "8:_6525477033214D7EA19432EDEDE9D0EB"
-            "Icon" = "8:_33F0C7D04ED04379AA403F9895CBB738"
+            "Icon" = "8:_21D6F2A9891545DF815804DCF6F5D6AB"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B9AE7337F6D248088DBB47A3E528F092"
+            {
+            "Name" = "8:卸载"
+            "Arguments" = "8:{D908CB8F-1391-47DF-9AB1-51EE863673F2}"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_7334AF7E364B46049BE185AA8D9B461B"
+            "Folder" = "8:_65ADC337315C412CBE45FAC59F24C714"
+            "WorkingFolder" = "8:_6525477033214D7EA19432EDEDE9D0EB"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -806,9 +873,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_51990F72BEDA48AA8853E88B7DDABCAA"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_31B05D3103FE417093187F7F451D5EAC"
             {
-            "SourcePath" = "8:..\\CourseValidationTool_CSharp\\obj\\Release\\CourseValidationTool_CSharp.exe"
+            "SourcePath" = "8:..\\CourseValidationTool_CSharp\\obj\\Release\\CourseValidationTool_MCSharp.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_6525477033214D7EA19432EDEDE9D0EB"

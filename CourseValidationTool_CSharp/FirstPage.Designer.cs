@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstPage));
             this.OpenFileFolderBtn = new System.Windows.Forms.Button();
-            this.TestEncodingBtn = new System.Windows.Forms.Button();
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.fileFolderText = new System.Windows.Forms.TextBox();
-            this.enCodingList = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.validateCourseBtn = new System.Windows.Forms.Button();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.TestEncodingBtn = new System.Windows.Forms.Button();
+            this.enCodingList = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // OpenFileFolderBtn
@@ -48,15 +49,22 @@
             this.OpenFileFolderBtn.UseVisualStyleBackColor = true;
             this.OpenFileFolderBtn.Click += new System.EventHandler(this.OpenFileFolderBtn_Click);
             // 
-            // TestEncodingBtn
+            // fileFolderText
             // 
-            this.TestEncodingBtn.Location = new System.Drawing.Point(482, 85);
-            this.TestEncodingBtn.Name = "TestEncodingBtn";
-            this.TestEncodingBtn.Size = new System.Drawing.Size(108, 31);
-            this.TestEncodingBtn.TabIndex = 1;
-            this.TestEncodingBtn.Text = "测试编码";
-            this.TestEncodingBtn.UseVisualStyleBackColor = true;
-            this.TestEncodingBtn.Click += new System.EventHandler(this.TestEncodingBtn_Click);
+            this.fileFolderText.Location = new System.Drawing.Point(13, 19);
+            this.fileFolderText.Name = "fileFolderText";
+            this.fileFolderText.Size = new System.Drawing.Size(489, 22);
+            this.fileFolderText.TabIndex = 3;
+            // 
+            // validateCourseBtn
+            // 
+            this.validateCourseBtn.Location = new System.Drawing.Point(13, 64);
+            this.validateCourseBtn.Name = "validateCourseBtn";
+            this.validateCourseBtn.Size = new System.Drawing.Size(110, 31);
+            this.validateCourseBtn.TabIndex = 6;
+            this.validateCourseBtn.Text = "校验课程";
+            this.validateCourseBtn.UseVisualStyleBackColor = true;
+            this.validateCourseBtn.Click += new System.EventHandler(this.validateCourseBtn_Click);
             // 
             // richTextBox
             // 
@@ -66,12 +74,15 @@
             this.richTextBox.TabIndex = 2;
             this.richTextBox.Text = "";
             // 
-            // fileFolderText
+            // TestEncodingBtn
             // 
-            this.fileFolderText.Location = new System.Drawing.Point(13, 19);
-            this.fileFolderText.Name = "fileFolderText";
-            this.fileFolderText.Size = new System.Drawing.Size(489, 22);
-            this.fileFolderText.TabIndex = 3;
+            this.TestEncodingBtn.Location = new System.Drawing.Point(482, 85);
+            this.TestEncodingBtn.Name = "TestEncodingBtn";
+            this.TestEncodingBtn.Size = new System.Drawing.Size(108, 31);
+            this.TestEncodingBtn.TabIndex = 1;
+            this.TestEncodingBtn.Text = "测试编码";
+            this.TestEncodingBtn.UseVisualStyleBackColor = true;
+            this.TestEncodingBtn.Click += new System.EventHandler(this.TestEncodingBtn_Click);
             // 
             // enCodingList
             // 
@@ -96,16 +107,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "选择编码方式";
             // 
-            // validateCourseBtn
-            // 
-            this.validateCourseBtn.Location = new System.Drawing.Point(13, 64);
-            this.validateCourseBtn.Name = "validateCourseBtn";
-            this.validateCourseBtn.Size = new System.Drawing.Size(110, 31);
-            this.validateCourseBtn.TabIndex = 6;
-            this.validateCourseBtn.Text = "校验课程";
-            this.validateCourseBtn.UseVisualStyleBackColor = true;
-            this.validateCourseBtn.Click += new System.EventHandler(this.validateCourseBtn_Click);
-            // 
             // FirstPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -118,6 +119,7 @@
             this.Controls.Add(this.richTextBox);
             this.Controls.Add(this.TestEncodingBtn);
             this.Controls.Add(this.OpenFileFolderBtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FirstPage";
             this.Text = "课程校验工具";
             this.ResumeLayout(false);
@@ -128,13 +130,13 @@
         #endregion
 
         private System.Windows.Forms.Button OpenFileFolderBtn;
-        private System.Windows.Forms.Button TestEncodingBtn;
-        private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.TextBox fileFolderText;
-        private System.Windows.Forms.ListBox enCodingList;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Button validateCourseBtn;
+        private System.Windows.Forms.RichTextBox richTextBox;
+        private System.Windows.Forms.Button TestEncodingBtn;
+        private System.Windows.Forms.ListBox enCodingList;
+        private System.Windows.Forms.Label label1;
     }
 }
 
