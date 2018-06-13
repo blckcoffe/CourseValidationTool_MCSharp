@@ -61,6 +61,11 @@ namespace CourseValidationTool_CSharp
 
             foreach (DirectoryInfo childDirectory in parentDirectory.GetDirectories())
             {
+                if ( childDirectory.Name.Length == ( childDirectory.Name.LastIndexOf("_延伸") + 3 ) )
+                {
+                    continue;
+                }
+
                 jsonFileProcessor = new childDirectoryProcessor(childDirectory, enCoding);
                 childDirectoryProcessors.Add(jsonFileProcessor);
                 waitHandle = new AutoResetEvent(false);
@@ -132,7 +137,7 @@ namespace CourseValidationTool_CSharp
             }
 
             JsonFileProcessor jsonFileProcessor = new JsonFileProcessor(fileFolderText.Text, enCodeCode);
-            string jsonFile = jsonFileProcessor.ReadJsonFile(fileFolderText.Text);
+            string jsonFile = jsonFileProcessor.ReadJsonFile(fileFolderText.Text)[0];
             if (jsonFile == "")
             {
                 MessageBox.Show("当前目录下没有找到Json文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -5,10 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
+using NPinyin;
 using System.Text.RegularExpressions;
+
 
 namespace CourseValidationTool_CSharp
 {
+
+    public struct JsonFileNameContent
+    {
+        string fileName;
+        string fileContent;
+    }
+
     class LogCache
     {
         private StringBuilder logBuffer;
@@ -25,6 +34,15 @@ namespace CourseValidationTool_CSharp
         public string GetLog()
         {
             return logBuffer.ToString();
+        }
+    }
+
+    public class PinYinConverterHelp
+    {
+        public static string Convert2Pinyin( string src)
+        {
+            string sResult = Pinyin.GetPinyin(src);
+            return Regex.Replace(sResult, @"\s", "");
         }
     }
 
@@ -130,37 +148,16 @@ namespace CourseValidationTool_CSharp
             return true;
         }
 
-        public string ReadJsonFile(string FilePath )
+        private string _ReadJsonFileContent(string jsonFile)
         {
-            string jsonFile = "";
-            DirectoryInfo folder = new DirectoryInfo(FilePath);
-            foreach (FileInfo file in folder.GetFiles("*.json"))
-            {
-                if ( file.FullName.IndexOf("_Extend.json") < 0 )
-                {
-                    jsonFile = file.FullName;
-                }               
-            }
-
             string filecontent;
+            FileStream fs = new FileStream(jsonFile, FileMode.Open, FileAccess.Read);
 
-            if ( jsonFile == "")
-            {
-                _WriteLogWithEnter(FilePath + "文件夹中不包含相关Json文件", 1);
-                return "";
-            }
-
-            FileStream fs       = new FileStream(jsonFile, FileMode.Open, FileAccess.Read);
             Encoding r = GetType(fs);
             string enCodingLocal = "UTF-8";
-            if( r != Encoding.UTF8 )
+            if (r != Encoding.UTF8)
             {
                 enCodingLocal = "GBK";
-            }
-
-            if ( enCoding != "" )
-            {
-               // enCodingLocal = enCoding;
             }
 
             StreamReader sr = new StreamReader(fs, Encoding.GetEncoding(enCodingLocal));
@@ -168,7 +165,38 @@ namespace CourseValidationTool_CSharp
             filecontent = sr.ReadToEnd();
             sr.Close();
             fs.Close();
+
             return filecontent;
+        }
+
+        public string[] ReadJsonFile(string FilePath )
+        {
+            string jsonFile = "";
+            List<string> jsonFileContentlist = new List<string>(2);
+            var jsonFileContentArr = new string[2];
+            string filecontent = "";
+            DirectoryInfo folder = new DirectoryInfo(FilePath);
+            string filenamePinyin = PinYinConverterHelp.Convert2Pinyin(folder.Name);
+            _WriteLogWithEnter("文件夹拼音: " + filenamePinyin, 1);
+            foreach (FileInfo file in folder.GetFiles("*.json"))
+            {
+                filecontent = _ReadJsonFileContent(file.FullName);
+                if ( file.FullName.IndexOf("_Extend.json") < 0 )
+                {
+                    jsonFileContentArr[0] = filecontent;
+                }
+                else
+                {
+                    jsonFileContentArr[1] = filecontent;
+                }
+            }
+
+            if ( jsonFile == "")
+            {
+                _WriteLogWithEnter(FilePath + "文件夹中不包含相关Json文件", 1);
+            }
+
+            return jsonFileContentArr;
         }
 
         public Boolean ValidateFolderFiles(string FilePath)
@@ -291,6 +319,68 @@ namespace CourseValidationTool_CSharp
             return result;
         }
 
+        private int _ProcessJsonFileFolder(string FileFolder )
+        {
+            int result = 0;
+
+            var fileContentArr = ReadJsonFile(FileFolder);
+
+
+            string fileContent = fileContentArr[0];
+            if ((fileContent == "") || ( fileContent == null))
+            {
+                _WriteLogWithEnter("读取Json失败", 1);
+                return 1;
+            }
+            _WriteLogWithEnter("开始检查Json文件： ", 0);
+            JsonResult deserializedProduct = JsonConvert.DeserializeObject<JsonResult>(fileContent);
+            if (deserializedProduct == null)
+            {
+                _WriteLogWithEnter("Json文件解析失败，请先检查json文件格式是否正确", 1);
+                return 1;
+            }
+            Boolean jsonResult = ValidateJsonContent(deserializedProduct);
+            if (true == jsonResult)
+            {
+                _WriteLogWithEnter("Json文件检查成功", 0);
+            }
+            else
+            {
+                _WriteLogWithEnter("Json文件检查失败", 1);
+                result = 1;
+            }
+
+
+            fileContent = fileContentArr[1];
+            if ((fileContent != "") && (fileContent != null))
+            {
+                JsonResult deserializedProduct_extend = JsonConvert.DeserializeObject<JsonResult>(fileContent);
+                if (deserializedProduct_extend == null)
+                {
+                    _WriteLogWithEnter("Extend Json文件解析失败，请先检查Extend json文件格式是否正确", 1);
+                    return 1;
+                }
+
+                var extendCourseFolder = new JsonFileProcessor( FileFolder + "_延伸", this.enCoding);
+                var strArray = FileFolder.Split('\\');
+                extendCourseFolder.CourseName = strArray[strArray.Length - 1] + "_延伸";
+                Boolean jsonResult_extend = extendCourseFolder.ValidateJsonContent(deserializedProduct_extend);
+                extendCourseFolder.ValidateFolderFiles(extendCourseFolder.CourseName);
+                if (true == jsonResult_extend)
+                {
+                    _WriteLogWithEnter("Extend Json文件检查成功", 0);
+                }
+                else
+                {
+                    _WriteLogWithEnter("Extend Json文件检查失败", 1);
+                    result = 1;
+                }
+            }
+
+            return result;
+        }
+
+
         public int ProcessJsonFileFolder( )
         {
             int result = 0;
@@ -314,8 +404,8 @@ namespace CourseValidationTool_CSharp
                 result = 1;
             }
 
-            string fileContent = ReadJsonFile(FileFolder);
-            if ( fileContent == "")
+            string fileContent = ReadJsonFile(FileFolder)[0];
+            if (( fileContent == "")||( fileContent == null ))
             {
                 _WriteLogWithEnter("读取Json失败", 1);
                 return 1;
