@@ -233,13 +233,13 @@ namespace CourseValidationTool_CSharp
                     {
                         foreach (string section in sectionContent.section)
                         {
-                            indexStart = section.IndexOf("《");
+                            indexStart = section.IndexOf("播放课件《");
                             if ( indexStart != -1)
                             {
                                 indexEnd = section.IndexOf("》");
                                 if (indexEnd != -1 )
                                 {
-                                    videoInJsonOfSection = section.Substring(indexStart + 1, indexEnd - indexStart-1) + ".mp4";
+                                    videoInJsonOfSection = section.Substring(indexStart + 5, indexEnd - indexStart-5) + ".mp4";
                                     if (CourseVideoInJsonOfLinkedVideo.IndexOf(videoInJsonOfSection) == -1)
                                     {
                                         _WriteLogWithEnter("Json sectioncontent中的视频在linkedvideo 中不存在\r\n  视频：" + videoInJsonOfSection, 1);

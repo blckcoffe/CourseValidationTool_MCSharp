@@ -20,6 +20,7 @@ namespace CourseValidationTool_CSharp
     }
     public partial class FirstPage : Form
     {
+        string defaultfilePath = "";
 
         public FirstPage()
         {
@@ -28,7 +29,19 @@ namespace CourseValidationTool_CSharp
 
         private void OpenFileFolderBtn_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog.ShowDialog();
+            //folderBrowserDialog.ShowDialog();
+            if (defaultfilePath != "")
+            {
+                //设置此次默认目录为上一次选中目录  
+                folderBrowserDialog.SelectedPath = defaultfilePath;
+            }
+
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                //记录选中的目录  
+                defaultfilePath = folderBrowserDialog.SelectedPath;
+            }
+
             fileFolderText.Text = folderBrowserDialog.SelectedPath;
         }
 
